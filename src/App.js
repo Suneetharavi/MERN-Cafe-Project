@@ -17,8 +17,11 @@ function App() {
       <>
       <NavBar user={user} setUser={setUser} />
       <Routes>
-          <Route path = '/orders/new' element={<NewOrderPage/>}/>
-          <Route path = '/orders' element={<OrderHistoryPage/>}/>
+          <Route path = '/orders/new' element={<NewOrderPage user={user} setUser={user}/>}/>
+          <Route path = '/orders' element={<OrderHistoryPage user={user} setUser={user}/>}/>
+          {/* redirect to /orders/new if path in address bar hasn't matched a <Route> above */}
+          {/* <Route path="/*" element={<Navigate to="/orders/new" />} /> */}
+         
       </Routes>
       </>):(<AuthPage setUser={setUser}></AuthPage>)
       }

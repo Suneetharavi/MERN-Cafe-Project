@@ -11,7 +11,7 @@ const usersCtrl = require('./controllers/api/users');
 // development to avoid collision with React's dev server
 const port = process.env.PORT || 3001;
 const app = express();
-
+const ensureLoggedIn = require('./config/ensureLoggedIn');
 
 // --------------middleware----------
 
@@ -24,6 +24,11 @@ app.use(require('./config/checkToken'));
 
 // Put API routes here, before the "catch all" route
 app.use('/api/users', require('./routes/api/users'));
+
+// Protect the API routes below from anonymous users
+
+app.use('/api/items', ensureLoggedIn, require('./routes/api/items'));
+app.use('/api/orders', ensureLoggedIn, require('./routes/api/orders'));
 
 app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
