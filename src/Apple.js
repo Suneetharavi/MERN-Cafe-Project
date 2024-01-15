@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import AuthPage from './components/AuthPage';
+// import AuthPage from './components/AuthPage';
+import AuthPage from './pages/AuthPage/AuthPage';
 import OrderHistoryPage from './components/OrderHistoryPage';
 import NewOrderPage from './components/NewOrderPage';
 import NavBar from './components/NavBar';
